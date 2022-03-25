@@ -9,6 +9,7 @@ const Product = ({ product, addToCart }) => {
     const { name, img, seller, price, stock, ratings } = product;
 
 
+
     return (
         <div className='product'>
             <img src={img} alt="" />

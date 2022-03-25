@@ -1,0 +1,23 @@
+.cart-info{
+    position: sticky;
+    top: 0;
+}
+.btn-cart{
+    width: 232px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+.btn-clear-cart{
+    background-color: #FF3030;
+    margin-top: 20px;
+}
+.btn-review-cart{
+background-color: #FF9900;
+}
+.btn-clear-text{
+    margin-right: 10px;
+}

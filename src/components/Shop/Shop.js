@@ -1,6 +1,7 @@
-import { faHandsAmericanSignLanguageInterpreting } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import React, { useEffect, useState } from 'react';
+import { addToLocalDb, getStoredCart } from '../../utilities/falseDb';
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
@@ -16,9 +17,35 @@ const Shop = () => {
             .then(data => setProducts(data))
     }, []);
 
-    const addToCart = product => {
-        const newCart = [...cart, product];
+    useEffect(() => {
+        const storedCart = getStoredCart()
+        const storedProduct = [];
+        for (const id in storedCart) {
+            const cartProducts = products.find(product => product.id === id)
+            if (cartProducts) {
+                cartProducts.quantity = storedCart[id];
+                storedProduct.push(cartProducts);
+            }
+        }
+        setCart(storedProduct);
+    }, [products])
+
+    const addToCart = userSelectedProduct => {
+
+        let newCart = [];
+        const existProduct = cart.find(product => product.id === userSelectedProduct.id);
+        if (existProduct) {
+            const restProduct = cart.filter(product => product.id !== userSelectedProduct.id);
+            existProduct.quantity = existProduct.quantity + 1;
+            newCart = [...restProduct, existProduct];
+        }
+        else {
+            userSelectedProduct.quantity = 1;
+            newCart = [...cart, userSelectedProduct]
+        }
+
         setCart(newCart);
+        addToLocalDb(userSelectedProduct)
     }
 
     return (
@@ -33,15 +60,7 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container">
-                <h2>Order Summery</h2>
-                <button className='btn-clear-cart btn-cart'>
-                    <p className='btn-clear-text'>Clear Cart</p>
-                    <FontAwesomeIcon icon={faHandsAmericanSignLanguageInterpreting}></FontAwesomeIcon>
-                </button>
-                <button className='btn-review-cart btn-cart'>
-                    <p className='btn-clear-text'>Review Order</p>
-                    <FontAwesomeIcon icon={faHandsAmericanSignLanguageInterpreting}></FontAwesomeIcon>
-                </button>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );
