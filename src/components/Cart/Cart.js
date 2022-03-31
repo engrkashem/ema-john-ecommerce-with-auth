@@ -2,11 +2,12 @@ import React from 'react';
 import { faHandsAmericanSignLanguageInterpreting } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Cart.css'
+import { Link } from 'react-router-dom';
 
 
 const Cart = (props) => {
     const { cart } = props
-    console.log(props)
+    // console.log(props.children)
     let totalPrice = 0;
     let shippingCharge = 0;
     let ProductQuantity = 0;
@@ -33,10 +34,11 @@ const Cart = (props) => {
                 <p className='btn-clear-text'>Clear Cart</p>
                 <FontAwesomeIcon icon={faHandsAmericanSignLanguageInterpreting}></FontAwesomeIcon>
             </button>
-            <button className='btn-review-cart btn-cart'>
-                <p className='btn-clear-text'>Review Order</p>
+            <Link to={'/inventory'} className='btn-review-cart btn-cart'>
+                <p className='btn-clear-text'>Proceed Checkout</p>
                 <FontAwesomeIcon icon={faHandsAmericanSignLanguageInterpreting}></FontAwesomeIcon>
-            </button>
+            </Link>
+            {props.children}
         </div>
     );
 };
