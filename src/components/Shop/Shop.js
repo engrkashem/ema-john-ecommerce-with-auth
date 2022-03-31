@@ -1,34 +1,19 @@
 
 import React, { useEffect, useState } from 'react';
-import { addToLocalDb, getStoredCart } from '../../utilities/falseDb';
+import useCart from '../../hooks/useCart';
+import useProduct from '../../hooks/useProduct';
+import { addToLocalDb } from '../../utilities/falseDb';
+
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
 const Shop = () => {
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useProduct();
 
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart(products);
 
-    useEffect(() => {
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, []);
-
-    useEffect(() => {
-        const storedCart = getStoredCart()
-        const storedProduct = [];
-        for (const id in storedCart) {
-            const cartProducts = products.find(product => product.id === id)
-            if (cartProducts) {
-                cartProducts.quantity = storedCart[id];
-                storedProduct.push(cartProducts);
-            }
-        }
-        setCart(storedProduct);
-    }, [products])
 
     const addToCart = userSelectedProduct => {
 
@@ -60,7 +45,9 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart}>
+                    <p>Hello From Shop</p>
+                </Cart>
             </div>
         </div>
     );
