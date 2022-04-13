@@ -1,0 +1,104 @@
+.form-container {
+    width: 500px;
+    margin: 20px auto;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: -12px 12px rgba(255, 224, 179, 1);
+}
+
+.form-title {
+    font-size: 35px;
+    font-weight: 400;
+    color: #2A414F;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-left: 10px;
+    margin-bottom: 9px;
+}
+
+.input-group input {
+    width: 415px;
+    height: 55px;
+    padding: 10px;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.form-submit {
+    width: 415px;
+    height: 55px;
+    font-size: 21px;
+    font-weight: 400;
+    border: none;
+    background-color: rgba(255, 153, 0, 0.3);
+    border-radius: 5px;
+    margin-bottom: 9px;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: rgba(255, 153, 0, 0.5);
+}
+
+.new-acc-text {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgba(42, 65, 79, 1);
+    font-weight: 400;
+}
+
+.form-link {
+    color: rgba(255, 153, 0, 1);
+    text-decoration: none;
+}
+
+.login-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.login-option hr {
+    width: 145px;
+}
+
+.google-login {
+    background-color: white;
+    width: 415px;
+    height: 55px;
+    border: 1px solid rgba(149, 160, 167, 1);
+    margin-bottom: 43px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.google-login:hover {
+    background-color: rgba(255, 153, 0, 0.2);
+}
+
+.google-login img {
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+}
+
+.google-login-text {
+    font-weight: 400;
+    font-size: 17px;
+    color: #2A414F;
+}
