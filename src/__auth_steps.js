@@ -9,11 +9,13 @@
 * useCreateUserWithEmailAndPassword(auth) from react-firebase-hooks.
 * if user is created then redirect to expected page by using useNavigate() hook.
 * useSignInWithEmailAndPassword(auth) from react-firebase-hooks to sign in.
-* go to reactrouter.com>authentication> open stackbliz
+* go to reactrouter.com>authentication> open stackbliz.
+* create RequireAuth component > check user exist? also track user location
+* in route into element protected component is being wrapped by RequiredAuth component.
 */
 
 /* 
-    hosting Steps:
+   Firebase hosting Steps:
 * npm install -g firebase-tools
 * firebase login
 * firebase init

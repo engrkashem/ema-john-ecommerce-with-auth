@@ -31,8 +31,8 @@ const Orders = () => {
                 </div>
                 <div className="cart-container">
                     <Cart cart={cart}
-                        route={'/inventory'}>
-                        <span > Proceed Checkout</span>
+                        route={'/shipment'}>
+                        <span > Proceed to Shipping</span>
                     </Cart>
                 </div>
             </div>
