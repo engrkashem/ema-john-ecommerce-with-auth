@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import icons from '../../images/icons.png'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Login = () => {
@@ -13,10 +13,12 @@ const Login = () => {
 
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
-    const location = useLocation()
-    const from = location.state?.from?.pathname || '/'
+    const [signInWithGoogle, gUser] = useSignInWithGoogle(auth);
 
-    if (user) {
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+
+    if (user || gUser) {
         navigate(from, { replace: true });
     }
 
@@ -52,7 +54,7 @@ const Login = () => {
                     <span>or</span>
                     <hr />
                 </div>
-                <button className="google-login">
+                <button onClick={() => signInWithGoogle()} className="google-login">
                     <img src={icons} alt="" /> <span className='google-login-text'>Continue with Google</span>
                 </button>
             </div>

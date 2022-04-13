@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import icons from '../../images/icons.png';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 
@@ -15,6 +15,11 @@ const SignUp = () => {
 
     const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth)
 
+    const [signInWithGoogle, gUser] = useSignInWithGoogle(auth);
+
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/order';
+
     const emailHandler = e => {
         setEmail(e.target.value)
     };
@@ -25,9 +30,9 @@ const SignUp = () => {
         setConfirmPassword(e.target.value)
     };
 
-    if (user) {
-        navigate('/shop');
-    };
+    if (user || gUser) {
+        navigate(from, { replace: true });
+    }
 
     const handleCreateUser = e => {
         e.preventDefault();
@@ -72,7 +77,7 @@ const SignUp = () => {
                     <span>or</span>
                     <hr />
                 </div>
-                <button className="google-login">
+                <button onClick={() => signInWithGoogle()} className="google-login">
                     <img src={icons} alt="" /> <span className='google-login-text'>Continue with Google</span>
                 </button>
             </div>
