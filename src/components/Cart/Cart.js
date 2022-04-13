@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const Cart = (props) => {
-    const { cart } = props
+    const { cart, route } = props
     // console.log(props.children)
     let totalPrice = 0;
     let shippingCharge = 0;
@@ -34,11 +34,11 @@ const Cart = (props) => {
                 <p className='btn-clear-text'>Clear Cart</p>
                 <FontAwesomeIcon icon={faHandsAmericanSignLanguageInterpreting}></FontAwesomeIcon>
             </button>
-            <Link to={'/inventory'} className='btn-review-cart btn-cart'>
-                <p className='btn-clear-text'>Proceed Checkout</p>
+            <Link to={route} className='btn-review-cart btn-cart'>
+                <p className='btn-clear-text'>{props.children}</p>
                 <FontAwesomeIcon icon={faHandsAmericanSignLanguageInterpreting}></FontAwesomeIcon>
             </Link>
-            {props.children}
+
         </div>
     );
 };

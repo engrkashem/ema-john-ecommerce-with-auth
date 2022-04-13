@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProduct from '../../hooks/useProduct';
 import { addToLocalDb } from '../../utilities/falseDb';
@@ -13,7 +14,6 @@ const Shop = () => {
     const [products, setProducts] = useProduct();
 
     const [cart, setCart] = useCart(products);
-
 
     const addToCart = userSelectedProduct => {
 
@@ -45,8 +45,10 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container">
-                <Cart cart={cart}>
-                    <p>Review Order</p>
+                <Cart cart={cart}
+                    route={'/order'}
+                >
+                    <span >Review Order</span>
                 </Cart>
             </div>
         </div>

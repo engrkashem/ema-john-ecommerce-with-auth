@@ -10,7 +10,6 @@ const Orders = () => {
 
     const [products, setProducts] = useProduct();
     const [cart, setCart] = useCart(products);
-    const navigate = useNavigate()
 
     const handleRemoveProduct = product => {
         const restCartProduct = cart.filter(item => item.id !== product.id)
@@ -31,12 +30,13 @@ const Orders = () => {
                     }
                 </div>
                 <div className="cart-container">
-                    <Cart cart={cart}>
-                        <button onClick={() => navigate('/inventory')}>Proceed Checkout</button>
+                    <Cart cart={cart}
+                        route={'/inventory'}>
+                        <span > Proceed Checkout</span>
                     </Cart>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
