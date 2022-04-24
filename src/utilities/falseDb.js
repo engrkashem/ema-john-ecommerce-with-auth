@@ -1,13 +1,13 @@
-const addToLocalDb = ({ id }) => {
+const addToLocalDb = ({ _id }) => {
     //Get Products in Shopping cart fron local storage
     let shoppingCart = getStoredCart()
 
     //add product into shopping cart
-    if (shoppingCart[id]) {
-        shoppingCart[id] = shoppingCart[id] + 1
+    if (shoppingCart[_id]) {
+        shoppingCart[_id] = shoppingCart[_id] + 1
     }
     else {
-        shoppingCart[id] = 1
+        shoppingCart[_id] = 1
     }
 
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));

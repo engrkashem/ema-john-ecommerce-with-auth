@@ -10,15 +10,14 @@ import './Shop.css'
 const Shop = () => {
 
     const [products, setProducts] = useProduct();
-
     const [cart, setCart] = useCart(products);
 
     const addToCart = userSelectedProduct => {
-
+        console.log('user selected product', userSelectedProduct)
         let newCart = [];
-        const existProduct = cart.find(product => product.id === userSelectedProduct.id);
+        const existProduct = cart.find(product => product._id === userSelectedProduct._id);
         if (existProduct) {
-            const restProduct = cart.filter(product => product.id !== userSelectedProduct.id);
+            const restProduct = cart.filter(product => product._id !== userSelectedProduct._id);
             existProduct.quantity = existProduct.quantity + 1;
             newCart = [...restProduct, existProduct];
         }
@@ -36,7 +35,7 @@ const Shop = () => {
             <div className="product-container">
                 {
                     products.map(product => <Product
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         addToCart={addToCart}
                     ></Product>)
