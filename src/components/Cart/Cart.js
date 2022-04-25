@@ -8,12 +8,10 @@ import { Link } from 'react-router-dom';
 const Cart = (props) => {
     const { cart, route } = props
     // console.log(props.children)
-    // console.log(cart);
     let totalPrice = 0;
     let shippingCharge = 0;
     let ProductQuantity = 0;
     cart.forEach(product => {
-        // console.log(product)
         const { price, shipping, quantity } = product;
         ProductQuantity += quantity
         totalPrice += price * quantity;

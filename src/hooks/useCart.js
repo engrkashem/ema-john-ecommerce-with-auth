@@ -8,7 +8,6 @@ const useCart = () => {
         const storedCart = getStoredCart();
         const storedProducts = [];
         const keys = Object.keys(storedCart);
-        console.log('useCart', keys)
         fetch('http://localhost:5000/products-by-keys', {
             method: 'POST',
             headers: {
@@ -18,7 +17,6 @@ const useCart = () => {
         })
             .then(res => res.json())
             .then(products => {
-                console.log(products)
                 for (const id in storedCart) {
                     const addedProduct = products.find(product => product._id === id);
                     if (addedProduct) {
