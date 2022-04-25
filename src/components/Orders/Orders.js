@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Orders = () => {
 
     const [products, setProducts] = useProduct();
-    const [cart, setCart] = useCart(products);
+    const [cart, setCart] = useCart();
 
     const handleRemoveProduct = product => {
         // console.log(product)
